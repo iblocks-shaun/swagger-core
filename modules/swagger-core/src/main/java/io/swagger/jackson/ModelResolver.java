@@ -753,22 +753,16 @@ public class ModelResolver extends AbstractModelConverter implements ModelConver
             DecimalMin min = (DecimalMin) annos.get("javax.validation.constraints.DecimalMin");
             if (property instanceof AbstractNumericProperty) {
                 AbstractNumericProperty ap = (AbstractNumericProperty) property;
-                if (min.inclusive()) {
-                    ap.setMinimum(new Double(min.value()));
-                } else {
-                    ap.setExclusiveMinimum(!min.inclusive());
-                }
+                ap.setMinimum(new Double(min.value()));
+                ap.setExclusiveMinimum(!min.inclusive());
             }
         }
         if (annos.containsKey("javax.validation.constraints.DecimalMax")) {
             DecimalMax max = (DecimalMax) annos.get("javax.validation.constraints.DecimalMax");
             if (property instanceof AbstractNumericProperty) {
                 AbstractNumericProperty ap = (AbstractNumericProperty) property;
-                if (max.inclusive()) {
-                    ap.setMaximum(new Double(max.value()));
-                } else {
-                    ap.setExclusiveMaximum(!max.inclusive());
-                }
+                ap.setMaximum(new Double(max.value()));
+                ap.setExclusiveMaximum(!max.inclusive());
             }
         }
         if (annos.containsKey("javax.validation.constraints.Pattern")) {
